@@ -1,25 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import Preview from './Preview'
+import Speed from './Speed'
+import getPrompt from './getPrompt'
 
-function App() {
+const initialState = {
+  text: getPrompt(),
+  userInput: '',
+  symbols: 0,
+  sec: 0,
+  started: false,
+  finished: false
+}
+
+const App = () => {
+
+  const [state, setState] = useState(initialState)
+
+  useEffect(() => {
+    if (state.started && !state.finished) {
+      const interval = setInterval(() => {
+        setState(state => ({ ...state, sec: state.sec + 1 }))
+      }, 1000)
+      return () => {
+        clearInterval(interval)
+      }
+    }
+  }, [state.started, state.finished])
+
+  const correctCount = (userText) => {
+    const text = userText.replace(' ', '');
+    return userText.replace(' ', '').split('').filter((symbol, index) => symbol === text[index]).length;
+  }
+
+  const isDone = (userText) => {
+    if (userText === state.text) {
+      return true
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="container mb-5 mt-5">
+      <div className="row">
+        <div className="col-md-6 offset-md-3">
+          <Preview text={state.text} userInput={state.userInput} />
+          <textarea
+            value={state.userInput}
+            onChange={event => setState({ ...state, userInput: event.target.value, symbols: correctCount(event.target.value), started: true, finished: isDone(event.target.value) })}
+            className="form-control mb-3"
+            placeholder="Start Typing..."
+            readOnly={state.finished}
+          >
+          </textarea>
+          <Speed sec={state.sec} symbols={state.symbols} text={state.text.split(' ').length} />
+          <div className="text-right">
+            <button className="btn btn-light" onClick={() => setState(initialState)}>Restart</button>
+          </div>
+        </div>
+      </div>
+    </div >
   );
 }
 
