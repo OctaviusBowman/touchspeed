@@ -27,13 +27,17 @@ const App = () => {
     }
   }, [state.started, state.finished])
 
+
   const correctCount = (userText) => {
     const text = userText.replace(' ', '');
     return userText.replace(' ', '').split('').filter((symbol, index) => symbol === text[index]).length;
   }
 
   const isDone = (userText) => {
-    if (userText === state.text) {
+
+    if (userText === state.text
+      // || (state.sec === 60)
+    ) {
       return true
     }
   }
@@ -48,10 +52,13 @@ const App = () => {
             onChange={event => setState({ ...state, userInput: event.target.value, symbols: correctCount(event.target.value), started: true, finished: isDone(event.target.value) })}
             className="form-control mb-3"
             placeholder="Start Typing..."
-            readOnly={state.finished}
+            readOnly={state.finished || state.sec >= 60}
           >
           </textarea>
-          <Speed sec={state.sec} symbols={state.symbols} text={state.text.split(' ').length} />
+          <div className="text-left">
+            <button className="btn btn-light" onClick={() => window.location.reload(false)}>New Prompt</button>
+          </div>
+          <Speed sec={state.sec} symbols={state.symbols} text={state.text} input={state.userInput} />
           <div className="text-right">
             <button className="btn btn-light" onClick={() => setState(initialState)}>Restart</button>
           </div>
