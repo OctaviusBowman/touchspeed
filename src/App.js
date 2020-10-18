@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Preview from './Preview'
 import Speed from './Speed'
 import getPrompt from './getPrompt'
+import Leaderbord from './Leaderboard'
 
 const initialState = {
   text: getPrompt(),
@@ -43,28 +44,32 @@ const App = () => {
   }
 
   return (
-    <div className="container mb-5 mt-5">
-      <div className="row">
-        <div className="col-md-6 offset-md-3">
-          <Preview text={state.text} userInput={state.userInput} />
-          <textarea
-            value={state.userInput}
-            onChange={event => setState({ ...state, userInput: event.target.value, symbols: correctCount(event.target.value), started: true, finished: isDone(event.target.value) })}
-            className="form-control mb-3"
-            placeholder="Start Typing..."
-            readOnly={state.finished || state.sec >= 60}
-          >
-          </textarea>
-          <div className="text-left">
-            <button className="btn btn-light" onClick={() => window.location.reload(false)}>New Prompt</button>
-          </div>
-          <Speed sec={state.sec} symbols={state.symbols} text={state.text} input={state.userInput} />
-          <div className="text-right">
-            <button className="btn btn-light" onClick={() => setState(initialState)}>Restart</button>
+    <div className="container">
+      <div className="mb-5 mt-5">
+        <div className="row">
+          <div className="col-md-6 offset-md-3">
+            <Preview text={state.text} userInput={state.userInput} />
+            <textarea
+              value={state.userInput}
+              onChange={event => setState({ ...state, userInput: event.target.value, symbols: correctCount(event.target.value), started: true, finished: isDone(event.target.value) })}
+              className="form-control mb-3"
+              placeholder="Start Typing..."
+              readOnly={state.finished || state.sec >= 60}
+            >
+            </textarea>
+            <div className="text-left">
+              <button className="btn btn-light" onClick={() => window.location.reload()}>New Prompt</button>
+            </div>
+            <Speed sec={state.sec} symbols={state.symbols} text={state.text} input={state.userInput} />
+            <div className="text-right">
+              <button className="btn btn-light" onClick={() => setState(initialState)}>Restart</button>
+            </div>
           </div>
         </div>
-      </div>
-    </div >
+      </div >
+      <Leaderbord />
+    </div>
+
   );
 }
 
