@@ -7,6 +7,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+//Prevent's pasting of copied text upon restart
+window.addEventListener('paste', (event) => {
+  event.preventDefault();
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -10,7 +10,7 @@ const Speed = ({ sec, symbols, text, input}) => {
         }
 
         return (
-            <div className="">{Math.round(wpm)} WPM</div>
+            <div className="wpm">{Math.round(wpm)} WPM</div>
         );
     }
     return null;

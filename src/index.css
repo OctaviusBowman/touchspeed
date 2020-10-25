@@ -1,10 +1,23 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+  font-family: 'Lato', sans-serif;
+  font-size: 1.10rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.background {
+  background-image: url('./assets/Background\ Image.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.preview-css {
+  background-color: white;
+  height: 15rem;
 }
 
 code {
@@ -12,6 +25,100 @@ code {
     monospace;
 }
 
+.btn-style {
+  background-color: #05aad3;
+  border: none;
+  width: 8rem;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 1.10rem;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 1.10px;
+  outline:none;
+  box-shadow: 2px 4px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.form-control {
+  height: 8rem !important;
+}
+
+.btn-style:hover {
+  background-color: #0481a0;
+  border: none;
+  outline: none;
+  box-shadow: 2px 4px 3px 1px rgba(0, 0, 0, 0.45);
+}
+
+.btn-style:focus {
+  border: none;
+  outline: none;
+}
+
+.wpm {
+  color: #05aad3;
+  font-size: 2rem;
+  text-shadow: 0px 0px 8px #0481a0;
+}
+
+.card-body {
+  margin: 10px 0px;
+  border-radius: 8px;
+  box-shadow: 3px 5px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.right {
+  margin-right: 25px;
+}
+
+.leaderboard-title {
+  background-color: #05aad3;
+  color: white;
+  letter-spacing: 1.10px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  border-radius: 8px;
+  margin-top: -5px;
+}
+
+.leaderboard-title:hover {
+  cursor: default;
+}
+
+.leaderboard-body:hover {
+  cursor: default;
+}
+
+.button-spacing {
+  line-height: 2rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-text {
+  width: 80%;
+  text-align: center;
+  color: #05aad3;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.header-text:hover {
+  cursor: default;
+}
+img{
+  height: 75px;
+  width: 75px;
+}
+
+/* .new-border {
+  background-color: white;
+} */
 /* Color Theme
 #40514e
 #2f89fc
