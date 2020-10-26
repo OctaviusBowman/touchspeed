@@ -26,7 +26,7 @@ code {
 }
 
 .btn-style {
-  background-color: #05aad3;
+  background: linear-gradient(-95deg, #0361b9, #05aad3);
   border: none;
   width: 8rem;
   border-radius: 8px;
@@ -44,7 +44,6 @@ code {
 }
 
 .btn-style:hover {
-  background-color: #0481a0;
   border: none;
   outline: none;
   box-shadow: 2px 4px 3px 1px rgba(0, 0, 0, 0.45);
@@ -67,19 +66,25 @@ code {
   box-shadow: 3px 5px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
+#leaderboard {
+  padding: 0px;
+  background-color: white;
+}
+
 .right {
   margin-right: 25px;
 }
 
+
 .leaderboard-title {
-  background-color: #05aad3;
+  background: linear-gradient(95deg, #0361b9, #05aad3);
   color: white;
   letter-spacing: 1.10px;
   font-weight: bold;
   text-align: center;
-  padding: 5px;
-  border-radius: 8px;
-  margin-top: -5px;
+  box-shadow: 0 10px 6px -6px rgba(0, 0, 0, 0.55);
+  border-radius: 8px 8px 2px 2px;
+  padding: 2rem 0rem;
 }
 
 .leaderboard-title:hover {
@@ -105,7 +110,6 @@ code {
   text-align: center;
   color: #05aad3;
   font-weight: bolder;
-  font-size: 2rem;
 }
 
 .header-text:hover {

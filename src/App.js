@@ -54,7 +54,7 @@ const App = () => {
           <div className="card card-body">
             <div className="header">
               <img src="/Favicon.png" alt="" />
-              <span className="header-text">Touch Speed</span>
+              <h1 className="header-text">Touch Speed</h1>
             </div>
             <Preview text={state.text} userInput={state.userInput} />
             <textarea
@@ -73,7 +73,7 @@ const App = () => {
             </div>
           </div>
         </div>
-        <div className="card card-body right col-2">
+        <div id="leaderboard" className="card-body right col-2">
           <Leaderboard />
         </div>
       </div >

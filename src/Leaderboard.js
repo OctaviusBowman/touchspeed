@@ -3,9 +3,9 @@ import React from 'react'
 const Leaderboard = () => {
     return (
         <div className="leaderboard">
-            <div className="leaderboard-title">
+            <h3 className="leaderboard-title">
                 Leaderboard
-            </div>
+            </h3>
             <div className="leaderboard-body">
                 List of Leaders
                 will go in this
