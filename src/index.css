@@ -120,6 +120,16 @@ img{
   width: 75px;
 }
 
+.bg-primary {
+  background: linear-gradient(95deg, #0361b9, #05aad3) !important;
+  margin: 8px 4px;
+}
+
+.avatar {
+  /* width: 20%; */
+  margin-left: 12px;
+  border-radius: 4px;
+}
 /* .new-border {
   background-color: white;
 } */

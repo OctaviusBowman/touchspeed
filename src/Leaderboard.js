@@ -1,4 +1,5 @@
 import React from 'react'
+import UserCard from './userCard'
 
 const Leaderboard = () => {
     return (
@@ -6,10 +7,12 @@ const Leaderboard = () => {
             <h3 className="leaderboard-title">
                 Leaderboard
             </h3>
-            <div className="leaderboard-body">
-                List of Leaders
-                will go in this
-                column
+            <div className="leaderboard-body mt-4">
+                <UserCard></UserCard>
+                <UserCard></UserCard>
+                <UserCard></UserCard>
+                <UserCard></UserCard>
+                <UserCard></UserCard>
             </div>
         </div>
     )
