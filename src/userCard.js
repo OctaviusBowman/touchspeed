@@ -1,14 +1,18 @@
 import React from 'react';
 
 const userCard = () => {
-    return ( 
+    return (
         <div className="card bg-primary">
             <div className="row">
-                <img className="avatar" src="/discord_logo.png" alt=""/>
-                <p className="card-name">Name</p>
+                <img className="avatar" src="/discord_logo.png" alt="" />
+                <div className="col card-text">
+                    <p id="name">Name</p>
+                    <p>WPM: {55}</p>
+                    <p>10/28/2020</p>
+                </div>
             </div>
         </div>
-     );
+    );
 }
- 
+
 export default userCard;

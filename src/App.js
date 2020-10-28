@@ -73,7 +73,7 @@ const App = () => {
             </div>
           </div>
         </div>
-        <div id="leaderboard" className="card-body right col-2">
+        <div id="leaderboard" className="card-body right col-xl-2">
           <Leaderboard />
         </div>
       </div >
