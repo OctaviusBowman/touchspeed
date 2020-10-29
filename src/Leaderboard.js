@@ -9,10 +9,10 @@ const Leaderboard = () => {
             </h3>
             <div className="leaderboard-body mt-4">
                 <UserCard></UserCard>
+                {/* <UserCard></UserCard>
                 <UserCard></UserCard>
                 <UserCard></UserCard>
-                <UserCard></UserCard>
-                <UserCard></UserCard>
+                <UserCard></UserCard> */}
             </div>
         </div>
     )
