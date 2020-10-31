@@ -43,6 +43,11 @@ const App = () => {
     }
   }
 
+  const refresh = () => {
+    setState(initialState)
+    document.getElementById("text").focus()
+  }
+
   return (
     // <div className="container">
     <div className="container-fluid">
@@ -58,6 +63,7 @@ const App = () => {
             </div>
             <Preview text={state.text} userInput={state.userInput} />
             <textarea
+              id="text"
               autoFocus
               value={state.userInput}
               onChange={event => setState({ ...state, userInput: event.target.value, symbols: correctCount(event.target.value), started: true, finished: isDone(event.target.value) })}
@@ -69,7 +75,7 @@ const App = () => {
             <div className="d-flex justify-content-between button-spacing">
               <button className="btn-style" onClick={() => window.location.reload()}>New Prompt</button>
               <Speed sec={state.sec} symbols={state.symbols} text={state.text} input={state.userInput} />
-              <button className="btn-style" onClick={() => setState(initialState)}>Restart</button>
+              <button className="btn-style" onClick={() => refresh()}>Restart</button>
             </div>
           </div>
         </div>
