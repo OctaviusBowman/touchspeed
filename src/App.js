@@ -68,7 +68,7 @@ const App = () => {
               value={state.userInput}
               onChange={event => setState({ ...state, userInput: event.target.value, symbols: correctCount(event.target.value), started: true, finished: isDone(event.target.value) })}
               className="form-control mb-5"
-              placeholder="Start Typing..."
+              placeholder="A 60 second timer will start from the time you start typing..."
               readOnly={state.finished || state.sec >= 60}
             >
             </textarea>
