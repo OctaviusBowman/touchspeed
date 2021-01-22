@@ -6,13 +6,16 @@ const Speed = ({ sec, symbols, text, input }) => {
 
         // Calculate's the users speed after a minute of typing
         if (sec >= 60) {
-            // Correct amout of word's typed
+
+            /***** DEPRICATED CODE FOR NOW *****
+            Correct amout of word's typed
             let inputSplit = input.split(' ')
             let textSplit = text.split(' ')
 
             let filteredText = inputSplit.filter((word, i) => {
                 return word === textSplit[i]
             })
+            */
 
             // Logic to count spaces in the given prompt text
             let textIndices = [];
@@ -34,23 +37,44 @@ const Speed = ({ sec, symbols, text, input }) => {
                 inputIdx = inputCharArr.indexOf(inputElement, inputIdx + 1);
             }
 
-            // console.log(inputCharArr.length)
-
+            // Always one behind
             let rangeTracker = [0];
+            let correctWords = [];
             // Compare the character's of the users input, to the character's of the prompt within a given index range
             for (let i = 0; textIndices[i] < inputCharArr.length; i++) {
-                console.log(rangeTracker)
                 console.log(textIndices[i])
+                console.log(rangeTracker)
+                let rangeLooper = rangeTracker[i];
+                let word = [""];
+                let count = 0;
+
+                inputCharArr[inputCharArr.length] = " ";
+
+                while (rangeLooper < textIndices[i]) {
+                    console.log(rangeLooper)
+                    if (textCharArr[rangeLooper] === inputCharArr[rangeLooper]) {
+                        count = count + 1;
+                        if (word[i] === undefined) {
+                            word[i] = ""
+                        }
+                        word[i] = word[i] + `${(inputCharArr[rangeLooper])}`
+                    }
+                    rangeLooper = rangeLooper + 1;
+                }
+                // To take in the last character of inputCharArr
+                if ((textIndices[i] - rangeTracker[i]) === count) {
+                    word[i - 1] = ""
+                    correctWords.push(word[i])
+                }
+                console.log(word[i])
                 rangeTracker.push(textIndices[i])
-                // Figure out the logic that goes here
             }
-
-
-
-            // return <div className="wpm">{filteredText.length} WPM with {errorIndex - filteredString} characters incorrect</div>
-            return <div className="wpm">{filteredText.length} WPM</div>
+            // Remove the first word
+            if (inputCharArr[textIndices[0]] !== " ") {
+                correctWords.shift()
+            }
+            return <div className="wpm">{correctWords.length} WPM</div>
         }
-
         return (
             <div className="wpm">{Math.round(wpm)} WPM</div>
         );
