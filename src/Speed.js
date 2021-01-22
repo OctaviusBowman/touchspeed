@@ -42,8 +42,6 @@ const Speed = ({ sec, symbols, text, input }) => {
             let correctWords = [];
             // Compare the character's of the users input, to the character's of the prompt within a given index range
             for (let i = 0; textIndices[i] < inputCharArr.length; i++) {
-                console.log(textIndices[i])
-                console.log(rangeTracker)
                 let rangeLooper = rangeTracker[i];
                 let word = [""];
                 let count = 0;
@@ -51,7 +49,6 @@ const Speed = ({ sec, symbols, text, input }) => {
                 inputCharArr[inputCharArr.length] = " ";
 
                 while (rangeLooper < textIndices[i]) {
-                    console.log(rangeLooper)
                     if (textCharArr[rangeLooper] === inputCharArr[rangeLooper]) {
                         count = count + 1;
                         if (word[i] === undefined) {
@@ -66,7 +63,6 @@ const Speed = ({ sec, symbols, text, input }) => {
                     word[i - 1] = ""
                     correctWords.push(word[i])
                 }
-                console.log(word[i])
                 rangeTracker.push(textIndices[i])
             }
             // Remove the first word
