@@ -10,7 +10,7 @@ const userCard = () => {
             </div>
 
             <div className="text-center">
-                <img className="w-12" src="/discord_logo.png" alt="" />
+                <img className="w-12 rounded-full border border-purple-500" src="/discord_logo.png" alt="" />
                 <p className="text-sm font-medium">Tay</p>
             </div>
             <div className='text-center pr-3'>
