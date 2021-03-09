@@ -2,13 +2,13 @@ import React from 'react';
 
 const Preview = ({ text, userInput }) => {
     return (
-        <div className="border rounded p-3 mb-3 preview-css">
+        <div className="border border-white border-opacity-5 text-white bg-gray-1000 rounded-xl m-3 p-4 shadow-md">
             {
                 text.split('').map((character, index) => {
                     let color;
                     if (index < userInput.length) {
                         // color = (character === userInput[index]) ? '#33E1FF' : '#BDBDBD'
-                        color = (character === userInput[index]) ? '#05aad3' : '#BDBDBD'
+                        color = (character === userInput[index]) ? '#05aad3' : '#8B5CF6'
                     }
                     return <span key={index} style={{ backgroundColor: color }}>{character}</span>
                 })

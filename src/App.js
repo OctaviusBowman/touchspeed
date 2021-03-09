@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./index.css"
 import Preview from './Preview'
 import Speed from './Speed'
 import getPrompt from './getPrompt'
@@ -49,17 +50,13 @@ const App = () => {
   }
 
   return (
-    // <div className="container">
-    <div className="container-fluid">
-      {/* <div className="mb-5 mt-5"> */}
-      <div className='row'>
-        {/* <div className="row new-border"> */}
-        <div className="col-8 offset-1">
-          {/* <div className="col-md-6 offset-md-3"> */}
-          <div className="card card-body">
-            <div className="header">
-              <img src="/Favicon.png" alt="" />
-              <h1 className="header-text">Touch Speed</h1>
+    <div className="flex min-h-screen bg-gray-1200">
+      <div className="grid grid-cols-12 px-20">
+        <div className="col-span-10 bg-gradient-to-br from-gray-1000 via-gray-1100 to-gray-1100 rounded-3xl my-9 z-10 shadow-md border border-white border-opacity-5">
+          <div className="grid grid-rows-8">
+            <div className="grid grid-cols-12 pl-4 pt-3">
+              <img className="animate-pulse" src="/Favicon.png" alt="Touch Speed Logo" />
+              <div className="col-span-10 place-self-center  text-gray-100 -ml-4 font-thin text-4xl">Touch Speed</div>
             </div>
             <Preview text={state.text} userInput={state.userInput} />
             <textarea
@@ -67,22 +64,20 @@ const App = () => {
               autoFocus
               value={state.userInput}
               onChange={event => setState({ ...state, userInput: event.target.value, symbols: correctCount(event.target.value), started: true, finished: isDone(event.target.value) })}
-              className="form-control mb-5"
+              className="rounded focus:outline-none shadow-inner m-4 p-4 h-44"
               placeholder="A 60 second timer will start from the time you start typing..."
               readOnly={state.finished || state.sec >= 60}
             >
             </textarea>
-            <div className="d-flex justify-content-between button-spacing">
-              <button className="btn-style" onClick={() => window.location.reload()}>New Prompt</button>
+            <div className="flex justify-between px-8 m-3">
+              <button className="text-white font-medium tracking-wide border border-transparent rounded-lg w-28 p-1.5 bg-blue-900 shadow-lg transition duration-300 hover:bg-purple-500 focus:outline-none" onClick={() => window.location.reload()}>New Prompt</button>
               <Speed sec={state.sec} symbols={state.symbols} text={state.text} input={state.userInput} />
-              <button className="btn-style" onClick={() => refresh()}>Restart</button>
+              <button className="text-white font-medium tracking-wide border border-transparent rounded-lg w-28 p-1.5 bg-blue-900 shadow-lg transition duration-300 hover:bg-purple-500 focus:outline-none" onClick={() => refresh()}>Restart</button>
             </div>
           </div>
         </div>
-        <div id="leaderboard" className="card-body right col-xl-2">
-          <Leaderboard />
-        </div>
-      </div >
+        <Leaderboard />
+      </div>
     </div>
 
   );
