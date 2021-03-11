@@ -16,6 +16,15 @@ module.exports = {
       },
       animation: {
         pulse: 'pulse 3.5s infinite'
+      },
+      screens: {
+        '1080p': '1919px',
+        'macOld': '2303px',
+        'macNew': '2559px',
+        '4k': '3839px'
+      },
+      fontSize: {
+        '9xl': '9rem'
       }
     },
   },

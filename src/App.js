@@ -48,15 +48,17 @@ const App = () => {
     setState(initialState)
     document.getElementById("text").focus()
   }
+  // Touch Speed Logo - parent class
+  // grid grid-cols-12 1080p:grid-cols-6
 
   return (
     <div className="flex min-h-screen bg-gray-1200">
       <div className="grid grid-cols-12 px-20">
         <div className="col-span-10 bg-gradient-to-br from-gray-1000 via-gray-1100 to-gray-1100 rounded-3xl my-9 z-10 shadow-md border border-white border-opacity-5">
-          <div className="grid grid-rows-8">
-            <div className="grid grid-cols-12 pl-4 pt-3">
-              <img className="animate-pulse" src="/Favicon.png" alt="Touch Speed Logo" />
-              <div className="col-span-10 place-self-center  text-gray-100 -ml-4 font-thin text-4xl">Touch Speed</div>
+          <div className="grid grid-rows-8 1080p:grid-rows-8 1080p:mx-6">
+            <div className="flex pl-4 pt-3 1080p:pt-12 1080p:pb-8 1080p:px-10">
+              <img className="animate-pulse w-20 1080p:w-28 self-start" src="/Favicon.png" alt="Touch Speed Logo" />
+              <div className="flex-1 self-center text-center text-gray-100 -ml-4 font-thin text-5xl 1080p:pr-20 1080p:text-6xl">Touch Speed</div>
             </div>
             <Preview text={state.text} userInput={state.userInput} />
             <textarea
@@ -64,15 +66,15 @@ const App = () => {
               autoFocus
               value={state.userInput}
               onChange={event => setState({ ...state, userInput: event.target.value, symbols: correctCount(event.target.value), started: true, finished: isDone(event.target.value) })}
-              className="rounded focus:outline-none shadow-inner m-4 p-4 h-44"
+              className="rounded focus:outline-none shadow-inner m-4 p-4 1080p:h-72 1080p:text-3xl h-44 1080p:mb-8 1080p:rounded-2xl"
               placeholder="A 60 second timer will start from the time you start typing..."
               readOnly={state.finished || state.sec >= 60}
             >
             </textarea>
-            <div className="flex justify-between px-8 m-3">
-              <button className="text-white font-medium tracking-wide border border-transparent rounded-lg w-28 p-1.5 bg-blue-900 shadow-lg transition duration-300 hover:bg-purple-500 focus:outline-none" onClick={() => window.location.reload()}>New Prompt</button>
+            <div className="flex justify-between px-6 m-3">
+              <button className="text-white font-medium tracking-wide border 1080p:text-3xl border-transparent rounded-lg 1080p:w-52 w-32 p-2 bg-blue-900 shadow-lg transition duration-300 hover:bg-purple-500 focus:outline-none" onClick={() => window.location.reload()}>New Prompt</button>
               <Speed sec={state.sec} symbols={state.symbols} text={state.text} input={state.userInput} />
-              <button className="text-white font-medium tracking-wide border border-transparent rounded-lg w-28 p-1.5 bg-blue-900 shadow-lg transition duration-300 hover:bg-purple-500 focus:outline-none" onClick={() => refresh()}>Restart</button>
+              <button className="text-white font-medium tracking-wide 1080p:text-3xl border border-transparent rounded-lg 1080p:w-52 w-32 p-2 bg-blue-900 shadow-lg transition duration-300 hover:bg-purple-500 focus:outline-none" onClick={() => refresh()}>Restart</button>
             </div>
           </div>
         </div>
