@@ -69,10 +69,10 @@ const Speed = ({ sec, symbols, text, input }) => {
             if (inputCharArr[textIndices[0]] !== " ") {
                 correctWords.shift()
             }
-            return <div className=" font-bold text-blue-900 text-2xl 1080p:text-3xl 1080p:self-center">{correctWords.length} WPM</div>
+            return <div className=" font-bold text-blue-900 text-2xl 1080p:text-3xl 1080p:self-center macOld:text-4xl macNew:text-5xl ">{correctWords.length} WPM</div>
         }
         return (
-            <div className="font-bold text-blue-900 text-2xl 1080p:text-3xl 1080p:self-center">{Math.round(wpm)} WPM</div>
+            <div className="font-bold text-blue-900 text-2xl 1080p:text-3xl 1080p:self-center macOld:text-4xl macNew:text-5xl ">{Math.round(wpm)} WPM</div>
         );
     }
     return null;

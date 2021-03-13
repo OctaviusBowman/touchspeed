@@ -25,6 +25,10 @@ module.exports = {
       },
       fontSize: {
         '9xl': '9rem'
+      },
+      spacing: {
+        '128': '32rem',
+        '144': '36rem'
       }
     },
   },
