@@ -18,6 +18,7 @@ module.exports = {
         pulse: 'pulse 3.5s infinite'
       },
       screens: {
+        'macAir': '1440px',
         '1080p': '1919px',
         'macOld': '2303px',
         'macNew': '2559px',
