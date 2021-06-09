@@ -1,4 +1,4 @@
-# [Touch Speeed](https://www.touchspeedtest.com/)
+# [Touch Speed] (https://www.touchspeedtest.com/)
 
 ## Available Scripts
 
