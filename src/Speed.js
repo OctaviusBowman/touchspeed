@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Speed = ({ sec, symbols, text, input }) => {
+    let wpm = ((input.split(' ').length) / (sec / 60))
     if (symbols !== 0 && sec !== 0) {
-        let wpm = ((input.split(' ').length) / (sec / 60))
 
         // Calculate's the users speed after a minute of typing
         if (sec >= 60) {
@@ -69,12 +69,14 @@ const Speed = ({ sec, symbols, text, input }) => {
             if (inputCharArr[textIndices[0]] !== " ") {
                 correctWords.shift()
             }
-            return <div className=" font-bold text-blue-900 text-2xl 1080p:text-3xl 1080p:self-center macOld:text-4xl macNew:text-5xl ">{correctWords.length} WPM</div>
+            return <div className="font-bold text-blue-900 text-2xl 1080p:text-3xl 1080p:self-center macOld:text-4xl macNew:text-5xl ">{correctWords.length} WPM</div>
         }
         return (
             <div className="font-bold text-blue-900 text-2xl 1080p:text-3xl 1080p:self-center macOld:text-4xl macNew:text-5xl ">{Math.round(wpm)} WPM</div>
         );
     }
+    // Function gets called here that passes the wpm up to the parent component
+    // Null is the default
     return null;
 }
 

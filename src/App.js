@@ -11,23 +11,35 @@ const initialState = {
   symbols: 0,
   sec: 0,
   started: false,
-  finished: false
+  finished: false,
 }
 
 const App = () => {
 
   const [state, setState] = useState(initialState)
+  const [wpm, setWpm] = useState(0)
+
+  useEffect(() => {
+      console.log(wpm)
+  }, [state.finished])
 
   useEffect(() => {
     if (state.started && !state.finished) {
       const interval = setInterval(() => {
         setState(state => ({ ...state, sec: state.sec + 1 }))
+        if (state.sec === 60) {
+          setState(state => ({...state, finished: state.finished = true}))
+        }
       }, 1000)
       return () => {
         clearInterval(interval)
       }
     }
+
+    callAPI();
   }, [state.started, state.finished])
+
+
 
 
   const correctCount = (userText) => {
@@ -37,12 +49,14 @@ const App = () => {
 
   const isDone = (userText) => {
 
-    if (userText === state.text
-      // || (state.sec === 60)
-    ) {
+    // TODO: Store local storage speed here
+
+    if (userText === state.text) {
       return true
     }
   }
+
+
 
   const refresh = () => {
     setState(initialState)
@@ -50,6 +64,12 @@ const App = () => {
   }
   // Touch Speed Logo - parent class
   // grid grid-cols-12 1080p:grid-cols-6
+
+  const callAPI = async () => {
+    await fetch("http://localhost:9000/user", { credentials: 'include' })
+      .then(res => res.text())
+      .then(data => console.log(data));
+  }
 
   return (
     <div className="flex min-h-screen bg-gray-1200">
