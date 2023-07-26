@@ -4,13 +4,15 @@ const UserCard = () => {
 
     const [name, setName] = useState([])
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await fetch('http://localhost:5000/profiles')
-            result.json().then(json => { setName(json) })
-        }
-        fetchData()
-    }, [])
+    //TODO: Set up .env variables to connect to backed-end and uncomment 👇🏾
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const result = await fetch('http://localhost:5000/profiles')
+    //         result.json().then(json => { setName(json) })
+    //     }
+    //     fetchData()
+    // }, [])
 
     return (
         <div className="flex flew-row items-center ml-4 my-2 macNew:my-4 macNew:py-3 macOld:py-2 4k:text-4xl 4k:px-4 4k:py-5 1080p:my-3 rounded-xl p-.5 py-1 justify-between bg-gradient-to-r from-blue-900 macNew:text-2xl to-blue-500 shadow-md 1080p:text-xl ">
