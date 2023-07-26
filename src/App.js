@@ -3,7 +3,8 @@ import "./index.css"
 import Preview from './Preview'
 import Speed from './Speed'
 import getPrompt from './getPrompt'
-import Leaderboard from './Leaderboard'
+import Leaderboard from './LeaderboardMini'
+import Modal from './Modal';
 
 const initialState = {
   text: getPrompt(),
@@ -17,18 +18,21 @@ const initialState = {
 const App = () => {
 
   const [state, setState] = useState(initialState)
-  const [wpm, setWpm] = useState(0)
+  const [showLeaderboard, setShowLeaderboard] = useState(false)
 
-  useEffect(() => {
-      console.log(wpm)
-  }, [state.finished])
+  // Exclusively prints finished wpm state to console log
+  // const [wpm, setWpm] = useState(0)
+
+  // useEffect(() => {
+  //     console.log(wpm)
+  // }, [state.finished])
 
   useEffect(() => {
     if (state.started && !state.finished) {
       const interval = setInterval(() => {
         setState(state => ({ ...state, sec: state.sec + 1 }))
         if (state.sec === 60) {
-          setState(state => ({...state, finished: state.finished = true}))
+          setState(state => ({ ...state, finished: state.finished = true }))
         }
       }, 1000)
       return () => {
@@ -36,7 +40,7 @@ const App = () => {
       }
     }
 
-    callAPI();
+    // callAPI();
   }, [state.started, state.finished])
 
 
@@ -65,11 +69,11 @@ const App = () => {
   // Touch Speed Logo - parent class
   // grid grid-cols-12 1080p:grid-cols-6
 
-  const callAPI = async () => {
-    await fetch("http://localhost:9000/user", { credentials: 'include' })
-      .then(res => res.text())
-      .then(data => console.log(data));
-  }
+  // const callAPI = async () => {
+  //   await fetch("http://localhost:5000/profiles", { credentials: 'include' })
+  //     .then(res => res.text())
+  //     .then(data => console.log(data));
+  // }
 
   return (
     <div className="flex min-h-screen bg-gray-1200">
@@ -98,8 +102,10 @@ const App = () => {
             </div>
           </div>
         </div>
-        <Leaderboard />
+        <Leaderboard onClick={() => setShowLeaderboard(!showLeaderboard)}/>
       </div>
+
+      <Modal visible={showLeaderboard} onClick={() => setShowLeaderboard(!showLeaderboard)}/>
     </div>
 
   );
