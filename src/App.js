@@ -20,6 +20,7 @@ const App = () => {
   const [state, setState] = useState(initialState)
   const [showLeaderboard, setShowLeaderboard] = useState(false)
 
+
   // Exclusively prints finished wpm state to console log
   // const [wpm, setWpm] = useState(0)
 
@@ -102,10 +103,10 @@ const App = () => {
             </div>
           </div>
         </div>
-        <Leaderboard onClick={() => setShowLeaderboard(!showLeaderboard)}/>
+        <Leaderboard onClick={() => setShowLeaderboard(!showLeaderboard)} />
       </div>
 
-      <Modal visible={showLeaderboard} onClick={() => setShowLeaderboard(!showLeaderboard)}/>
+      <Modal visible={showLeaderboard} closeModal={() => setShowLeaderboard(!showLeaderboard)} />
     </div>
 
   );
